@@ -39,9 +39,9 @@ class CoffeeMachine:
         elif temp == 0:
             print("The machine was inactive and returned to its idle state.")
             return temp
-        else:
-            print(self.list_of_roasts[randint(0, 11)])
-            return 5
+        print(self.list_of_roasts[randint(0, 11)])
+        return 5
+
     def get_input(self):
         """
         This function asks the user to select the beverage they want to buy. It expects integers ranging from 1 to 4. 
@@ -59,9 +59,8 @@ class CoffeeMachine:
         elif self.selected_beverage['stock'] < 0 and self.selected_beverage['stock'] < 5:
             print(f"you have selected {self.selected_beverage['beverage']}")
             return order
-        else:
-            print(self.list_of_roasts[randint(0, 11)])
-            return 5
+        print(self.list_of_roasts[randint(0, 11)])
+        return 5
 
     def payment(self):
         """
@@ -76,9 +75,8 @@ class CoffeeMachine:
         elif payment == 0:
             print("Your card has been declined.")
             return payment
-        else:
-            print(self.list_of_roasts[randint(0, 11)])
-            return 5
+        print(self.list_of_roasts[randint(0, 11)])
+        return 5
 
     def give_beverage(self):
         """
