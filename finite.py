@@ -1,13 +1,13 @@
 from state import State
 
 class FiniteStateMachine:
-    def __init__(self, startState, delta,sigma, k , f):
+    def __init__(self, start_state, delta,sigma, k , f):
         self.delta = delta # all states
-        self.currentState = startState #current state
+        self.current_state = start_state #current state
         self.f = f #stop staten
         self.sigma = sigma # alphabet
         self.k = k # all possible states and paths
-        self.startState = startState
+        self.start_state = start_state
 
     def run(self, condition, state):
         """
@@ -20,11 +20,11 @@ class FiniteStateMachine:
         k = self.k
         for path in k:
             if condition == int(path[1]) and state == path[0]:
-                self.currentState = path[2]
-                self.run(self.currentState.run(), self.currentState)
+                self.current_state = path[2]
+                self.run(self.current_state.run(), self.current_state)
 
     def start(self): 
-        self.run(self.startState.run(),self.startState)
+        self.run(self.start_state.run(),self.start_state)
 
     def add_to_sigma(self, value: int):
         self.sigma.append(value)
