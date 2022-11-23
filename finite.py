@@ -16,7 +16,6 @@ class FiniteStateMachine:
         
         parameters:
         condition -> the return value of the previous function : int
-        state -> the 
         """
         k = self.k
         for path in k:
@@ -27,11 +26,11 @@ class FiniteStateMachine:
     def start(self): 
         self.run(self.startState.run(),self.startState)
 
-    def addToSigma(self, value: int):
+    def add_to_sigma(self, value: int):
         self.sigma.append(value)
 
-    def addToK(self, k : tuple):
+    def add_to_k(self, k : tuple):
         self.k.append(k)
     
-    def addToDelta(self, state : State):
+    def add_to_delta(self, state : State):
         self.delta.append(state)

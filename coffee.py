@@ -1,28 +1,48 @@
+from random import randint
+
 class CoffeeMachine:
     def __init__(self, beverages : list):
         self.beverages = beverages
         self.selectedBeverage = None
+        self.list_of_roasts = ["This input is invalid, maybe you should buy some glasses.", 
+                            "Are you sure you want to do this? Or do you just have fat fingers.", 
+                            "How many tries will it take to submit the correct input?", 
+                            "This machine is sponsored by grade school counting", 
+                            "At this rate you will have a better chance of winning the lottery then submitting the correct input", 
+                            "Have you tried turning the machine off and on?", 
+                            "Maybe you need a cup of coffee to get the right input",
+                            "You should've provided a better coffee machine",
+                            "Have you tried texting your mom for help?",
+                            "Error 404 competence not found.",
+                            "Please call 911, i am about to commit a murder.",
+                            "Maybe Johnny Sins can \"repair\" this machine"]
     def start(self):
         start = int(input("Do you want to use the coffee machine?\n\4 yes: 1 \n\4 no: 0 \n"))
         if start ==1:
             print("You feel thirsty and walk to the coffee machine.")
-        else:
+            return start
+        elif start == 0:
             print("You have an appointment and dont have time for a drink.")
-        return start
+            return start
+        print(self.list_of_roasts[randint(0, 11)])
+        return 5
 
-    def pressGo(self):
+    def press_go(self):
         """
         This function simulates the "go" button on the coffee machine.
         """
-        temp = input("Choose your options \n\4 make beverage: 1 \n\4 time expired: 0 \n")
+        temp = int(input("Choose your options \n\4 make beverage: 1 \n\4 time expired: 0 \n"))
 
-        if int(temp) == 1:
+        if temp == 1:
             print("You pressed go.")
-            return 1
-        print("The machine was inactive and returned to its idle state.")
-        return 0
-
-    def getInput(self):
+            return temp
+        elif temp == 0:
+            print("The machine was inactive and returned to its idle state.")
+            return temp
+        else:
+            print(self.list_of_roasts[randint(0, 11)])
+            return 5
+    def get_input(self):
         """
         This function asks the user to select the beverage they want to buy. It expects integers ranging from 1 to 4. 
         This function does not catch invalid inputs since this application simulates a coffee machine which has buttons,
@@ -36,8 +56,12 @@ class CoffeeMachine:
             print(f"{self.selectedBeverage['beverage']} is out of stock.")
             print("You cry a little on the inside.")
             return 0
-        print(f"you have selected {self.selectedBeverage['beverage']}")
-        return order
+        elif self.selectedBeverage['stock'] < 0 and self.selectedBeverage['stock'] < 5:
+            print(f"you have selected {self.selectedBeverage['beverage']}")
+            return order
+        else:
+            print(self.list_of_roasts[randint(0, 11)])
+            return 5
 
     def payment(self):
         """
@@ -48,10 +72,15 @@ class CoffeeMachine:
         payment =int(input("Did the payment succeed?\n\4 No: 0\n\4 Yes: 1\n"))
         if payment == 1:
             print("The payment has been approved.")
-        else:
+            return payment
+        elif payment == 0:
             print("Your card has been declined.")
-        return payment
-    def giveBeverage(self):
+            return payment
+        else:
+            print(self.list_of_roasts[randint(0, 11)])
+            return 5
+
+    def give_beverage(self):
         """
         This function gives the user the requested beverage and updates the stock.
         """
@@ -60,3 +89,4 @@ class CoffeeMachine:
         self.beverages[self.beverages.index(self.selectedBeverage)] = self.selectedBeverage
         print(f"You walk away satisfied with your {self.selectedBeverage['beverage']} ")
         return 1
+
