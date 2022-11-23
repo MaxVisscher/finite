@@ -33,7 +33,8 @@ class CoffeeMachine:
         order = int(input("Please choose your beverage: \n\4 coffee: 1\n\4 tea: 2\n\4 water: 3\n\4 chocolate milk: 4 \n"))
         self.selectedBeverage = self.beverages[int(order) -1]
         if self.selectedBeverage['stock'] == 0:
-            print(f"{self.selectedBeverage['beverage']} is out of stock")
+            print(f"{self.selectedBeverage['beverage']} is out of stock.")
+            print("You cry a little on the inside.")
             return 0
         print(f"you have selected {self.selectedBeverage['beverage']}")
         return order
@@ -43,7 +44,7 @@ class CoffeeMachine:
         This function asks the user to pay. Since the machine only accepts digital payments the user is given the option for successful payment, for failed payment.
         To give the user the ability to test both scenario's.
         """
-        print(f"please pay $ {self.selectedBeverage['price']}")
+        print(f"Please pay $ {self.selectedBeverage['price']}.")
         payment =int(input("Did the payment succeed?\n\4 No: 0\n\4 Yes: 1\n"))
         if payment == 1:
             print("The payment has been approved.")
@@ -54,8 +55,8 @@ class CoffeeMachine:
         """
         This function gives the user the requested beverage and updates the stock.
         """
-        print(f"here is your {self.selectedBeverage['beverage']}")
+        print(f"Here is your {self.selectedBeverage['beverage']}")
         self.selectedBeverage['stock'] =  self.selectedBeverage['stock'] -1
         self.beverages[self.beverages.index(self.selectedBeverage)] = self.selectedBeverage
-        print(f"you walk away satisfied with your {self.selectedBeverage['beverage']} ")
+        print(f"You walk away satisfied with your {self.selectedBeverage['beverage']} ")
         return 1
