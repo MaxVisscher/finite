@@ -52,13 +52,14 @@ class CoffeeMachine:
         """
         order = int(input("Please choose your beverage: \n\4 coffee: 1\n\4 tea: 2\n\4 water: 3\n\4 chocolate milk: 4 \n"))
         self.selected_beverage = self.beverages[int(order) -1]
-        if self.selected_beverage['stock'] == 0:
-            print(f"{self.selectedBeverage['beverage']} is out of stock.")
-            print("You cry a little on the inside.")
-            return 0
-        elif self.selected_beverage['stock'] < 0 and self.selected_beverage['stock'] < 5:
+        if order > 0 and order < 5:
             print(f"you have selected {self.selected_beverage['beverage']}")
-            return order
+         
+            if self.selected_beverage['stock'] == 0:
+                print(f"{self.selected_beverage['beverage']} is out of stock.")
+                print("You cry a little on the inside.")
+                return 0
+            return 1
         print(self.list_of_roasts[randint(0, 11)])
         return 5
 
